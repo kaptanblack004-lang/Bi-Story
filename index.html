@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Test Zamanı</title>
+<style>
+  body { 
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    padding-top: 50px; 
+    background-image: url('https://duvarkagidimarketi.com/wp-content/uploads/2021/08/MUR5006-1-1000x1000.jpg'); /* Yeni görsel linki */
+    background-size: cover; /* Görselin tüm arka planı kaplamasını sağlar */
+    background-attachment: fixed; /* Sayfa kaydırıldığında arka plan sabit kalır */
+    background-position: center; /* Görselin ortalanmasını sağlar */
+    color: #000; /* Metin rengi siyah */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Sayfa yüksekliğini %100 yaparak tüm ekranı kapsar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Sayfa dışına taşmalar olmasın */
+  }
+
+  #gameBox { 
+    background: rgba(255, 255, 255, 0.8); /* Arka plan şeffaflığı */
+    display: inline-block; 
+    padding: 30px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    width: 80%; 
+    max-width: 600px;
+    position: relative;
+    z-index: 10;
+  }
+
+  button { 
+    margin: 10px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    transition: background-color 0.3s;
+  }
+  
+  button:hover { 
+    background-color: #45a049; 
+  }
+
+  /* Çiçek animasyonu */
+  .flower {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: pink;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall 5s infinite;
+    z-index: 1;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-50px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh); /* Ekranın altına kadar düşer */
+      opacity: 0;
+    }
+  }
+
+  /* Rastgele konumlandırmak için her çiçeğin başlangıç noktası farklı olacak */
+  .flower:nth-child(odd) {
+    left: calc(100% * random(0, 1)); /* Sağdan veya soldan */
+    animation-duration: 5s;
+  }
+
+  .flower:nth-child(even) {
+    left: calc(100% * random(0, 1)); /* Farklı animasyon süreleri */
+    animation-duration: 6s;
+  }
+
+  /* Şanslıyım butonunun küçülüp kaybolmasını sağlayacak animasyon */
+  .small {
+    animation: shrinkAndDisappear 1s forwards;
+  }
+
+  @keyframes shrinkAndDisappear {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.1);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="gameBox">
+  <div id="text">Evvet Mervecim, bugün günün nasıl geçti?</div>
+  <div id="options">
+    <button onclick="good()">İyi</button>
+    <button onclick="bad()">Kötü</button>
+  </div>
+</div>
+
+<script>
+// Çiçek ekleme işlevi
+function generateFlowers() {
+  const flowerCount = 10; // Ekranda düşen çiçek sayısı
+  const gameArea = document.getElementById("gameBox");
+
+  for (let i = 0; i < flowerCount; i++) {
+    const flower = document.createElement('div');
+    flower.classList.add('flower');
+    
+    // Rastgele konum ayarlama
+    flower.style.left = Math.random() * 100 + 'vw'; // Ekranın sağında ve solunda rastgele
+    flower.style.animationDuration = Math.random() * 3 + 4 + 's'; // Çiçeklerin hızları farklı
+    gameArea.appendChild(flower);
+  }
+}
+
+// Oyun başlamadan çiçekleri yerleştirme
+generateFlowers();
+
+function clearOptions() {
+  document.getElementById("options").innerHTML = "";
+}
+
+// İyi seçenek
+function good() {
+  document.getElementById("text").innerText = "Vayy sevindim, sözde hiç gidesin bile yoktu";
+  clearOptions();
+  let btn = document.createElement("button");
+  btn.innerText = "Devam et";
+  btn.onclick = goodContinue;
+  document.getElementById("options").appendChild(btn);
+}
+
+// İyi seçeneği devamı
+function goodContinue() {
+  document.getElementById("text").innerText = "Tebrikler testi başarıyla geçtin, ceza almadan kurtuldun";
+  clearOptions();
+
+  let btnLucky = document.createElement("button");
+  btnLucky.innerText = "Şanslıyım";
+  btnLucky.onclick = luckyClick;
+
+  let btnUnlucky = document.createElement("button");
+  btnUnlucky.innerText = "Şanssızım";
+  btnUnlucky.onclick = unluckyClick;
+
+  document.getElementById("options").appendChild(btnLucky);
+  document.getElementById("options").appendChild(btnUnlucky);
+}
+
+// Şanslıyım butonu
+let luckyClicked = 0;
+function luckyClick() {
+  let btn = event.target;
+  luckyClicked++;
+  if (luckyClicked === 1) {
+    btn.classList.add("small"); // Küçülme ve kaybolma animasyonunu başlat
+  } else if (luckyClicked === 2) {
+    btn.classList.add("hidden");
+  }
+}
+
+// Şanssızım butonu
+function unluckyClick() {
+  document.getElementById("text").innerText = "Demek şanssız olduğunu kabul ettin, yoksa kazandın mı? Çünkü diğer seçenekte sana ceza kesmiştim. Tebriklerrr";
+  clearOptions();
+}
+
+// Kötü seçenek
+function bad() {
+  document.getElementById("text").innerText = "Tüh ya üzüldüm ben sana, bu kadar yorma demedim mi?";
+  clearOptions();
+  let btn = document.createElement("button");
+  btn.innerText = "Ekmek parası";
+  btn.onclick = function() {
+    document.getElementById("text").innerText = "Cezalısın! Sabah beni 6:30’da uyandıracaksın";
+    clearOptions();
+  };
+  document.getElementById("options").appendChild(btn);
+}
+</script>
+
+</body>
+</html>
