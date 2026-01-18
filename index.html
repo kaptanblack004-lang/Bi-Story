@@ -1,198 +1,171 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Test Zamanı</title>
-<style>
-  body { 
-    font-family: Arial, sans-serif; 
-    text-align: center; 
-    padding-top: 50px; 
-    background-image: url('https://duvarkagidimarketi.com/wp-content/uploads/2021/08/MUR5006-1-1000x1000.jpg'); /* Yeni görsel linki */
-    background-size: cover; /* Görselin tüm arka planı kaplamasını sağlar */
-    background-attachment: fixed; /* Sayfa kaydırıldığında arka plan sabit kalır */
-    background-position: center; /* Görselin ortalanmasını sağlar */
-    color: #000; /* Metin rengi siyah */
-    margin: 0;
-    padding: 0;
-    height: 100vh; /* Sayfa yüksekliğini %100 yaparak tüm ekranı kapsar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Sayfa dışına taşmalar olmasın */
-  }
-
-  #gameBox { 
-    background: rgba(255, 255, 255, 0.8); /* Arka plan şeffaflığı */
-    display: inline-block; 
-    padding: 30px; 
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-    width: 80%; 
-    max-width: 600px;
-    position: relative;
-    z-index: 10;
-  }
-
-  button { 
-    margin: 10px; 
-    padding: 10px 20px; 
-    font-size: 16px; 
-    cursor: pointer; 
-    background-color: #4CAF50; 
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-    transition: background-color 0.3s;
-  }
-  
-  button:hover { 
-    background-color: #45a049; 
-  }
-
-  /* Çiçek animasyonu */
-  .flower {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: pink;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: fall 5s infinite;
-    z-index: 1;
-  }
-
-  @keyframes fall {
-    0% {
-      transform: translateY(-50px);
-      opacity: 1;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Merve'ye Deli Sürpriz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom, #2d0015, #4a0025, #880e4f);
+      color: #ff4081;
+      margin: 0;
+      padding: 30px;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-    100% {
-      transform: translateY(100vh); /* Ekranın altına kadar düşer */
-      opacity: 0;
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
     }
-  }
-
-  /* Rastgele konumlandırmak için her çiçeğin başlangıç noktası farklı olacak */
-  .flower:nth-child(odd) {
-    left: calc(100% * random(0, 1)); /* Sağdan veya soldan */
-    animation-duration: 5s;
-  }
-
-  .flower:nth-child(even) {
-    left: calc(100% * random(0, 1)); /* Farklı animasyon süreleri */
-    animation-duration: 6s;
-  }
-
-  /* Şanslıyım butonunun küçülüp kaybolmasını sağlayacak animasyon */
-  .small {
-    animation: shrinkAndDisappear 1s forwards;
-  }
-
-  @keyframes shrinkAndDisappear {
-    0% {
-      transform: scale(1);
-      opacity: 1;
+    .heart {
+      position: absolute;
+      font-size: 1.8em;
+      animation: float 15s linear infinite;
+      opacity: 0.5;
+      filter: drop-shadow(0 0 5px #ff4081);
     }
-    100% {
-      transform: scale(0.1);
-      opacity: 0;
+    @keyframes float {
+      0% { transform: translateY(120vh) translateX(-20vw) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.6; }
+      100% { transform: translateY(-40vh) translateX(40vw) rotate(1080deg); opacity: 0; }
     }
-  }
-</style>
+    h1 {
+      font-size: 3em;
+      margin: 40px 20px;
+      text-shadow: 3px 3px 15px #000;
+      animation: glitch 4s infinite;
+      z-index: 10;
+    }
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #ff4081, -2px -2px #00ffff; }
+      20% { text-shadow: -2px 2px #ff4081, 2px -2px #00ffff; }
+      40% { text-shadow: 2px -2px #ff4081, -2px 2px #00ffff; }
+      60% { text-shadow: -2px -2px #ff4081, 2px 2px #00ffff; }
+      80%, 100% { text-shadow: 2px 2px #ff4081, -2px -2px #00ffff; }
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 140px;
+      flex-wrap: wrap;
+      margin: 70px 0;
+      z-index: 10;
+    }
+    button {
+      padding: 25px 90px;
+      font-size: 2em;
+      font-weight: bold;
+      border: none;
+      border-radius: 80px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+    #yes {
+      background: #ff4081;
+      color: white;
+    }
+    #yes:hover {
+      transform: scale(1.1) rotate(-3deg);
+      box-shadow: 0 20px 40px rgba(255,64,129,0.6);
+    }
+    #no {
+      background: #424242;
+      color: #bdbdbd;
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    #no:hover {
+      opacity: 0.9;
+      transform: translateY(-8px);
+    }
+    #message {
+      font-size: 2.4em;
+      margin: 70px 30px;
+      color: #ff80ab;
+      display: none;
+      animation: fadeIn 2s;
+      text-shadow: 2px 2px 10px black;
+      z-index: 10;
+    }
+    #no-warning {
+      font-size: 1.6em;
+      color: #ff1744;
+      margin: 30px 0;
+      display: none;
+      font-style: italic;
+      z-index: 10;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-<div id="gameBox">
-  <div id="text">Evvet Mervecim, bugün günün nasıl geçti?</div>
-  <div id="options">
-    <button onclick="good()">İyi</button>
-    <button onclick="bad()">Kötü</button>
+  <div class="hearts" id="heartsContainer"></div>
+
+  <h1>Benimle konuşmak için can atıyor musun Merve?</h1>
+
+  <div class="buttons">
+    <button id="yes">EVET lan tabii ki</button>
+    <button id="no">Hayır</button>
   </div>
-</div>
 
-<script>
-// Çiçek ekleme işlevi
-function generateFlowers() {
-  const flowerCount = 10; // Ekranda düşen çiçek sayısı
-  const gameArea = document.getElementById("gameBox");
+  <div id="no-warning">Deneme kızım, burası yasak bölge. Patlatırım sistemi haa</div>
 
-  for (let i = 0; i < flowerCount; i++) {
-    const flower = document.createElement('div');
-    flower.classList.add('flower');
-    
-    // Rastgele konum ayarlama
-    flower.style.left = Math.random() * 100 + 'vw'; // Ekranın sağında ve solunda rastgele
-    flower.style.animationDuration = Math.random() * 3 + 4 + 's'; // Çiçeklerin hızları farklı
-    gameArea.appendChild(flower);
-  }
-}
+  <div id="message">Hah biliyordum! Kafam zaten kırık, sen de gel boz şu aklımı. Hemen yaz yoksa ben yazarım, haberin olsun deli gibi bekliyorum</div>
 
-// Oyun başlamadan çiçekleri yerleştirme
-generateFlowers();
+  <script>
+    function createHeart() {
+      if (Math.random() > 0.7) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '💥';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 8 + 12) + 's';
+        document.getElementById('heartsContainer').appendChild(heart);
+        setTimeout(() => heart.remove(), 20000);
+      }
+    }
+    setInterval(createHeart, 1200);
 
-function clearOptions() {
-  document.getElementById("options").innerHTML = "";
-}
+    const yesBtn = document.getElementById('yes');
+    const noBtn = document.getElementById('no');
+    const msg = document.getElementById('message');
+    const warning = document.getElementById('no-warning');
 
-// İyi seçenek
-function good() {
-  document.getElementById("text").innerText = "Vayy sevindim, sözde hiç gidesin bile yoktu";
-  clearOptions();
-  let btn = document.createElement("button");
-  btn.innerText = "Devam et";
-  btn.onclick = goodContinue;
-  document.getElementById("options").appendChild(btn);
-}
+    noBtn.addEventListener('click', (e) => e.preventDefault());
 
-// İyi seçeneği devamı
-function goodContinue() {
-  document.getElementById("text").innerText = "Tebrikler testi başarıyla geçtin, ceza almadan kurtuldun";
-  clearOptions();
+    noBtn.addEventListener('mouseover', () => warning.style.display = 'block');
+    noBtn.addEventListener('mouseout', () => warning.style.display = 'none');
 
-  let btnLucky = document.createElement("button");
-  btnLucky.innerText = "Şanslıyım";
-  btnLucky.onclick = luckyClick;
+    yesBtn.addEventListener('click', () => {
+      msg.style.display = 'block';
+      noBtn.style.display = 'none';
+      warning.style.display = 'none';
+      confetti({
+        particleCount: 150,
+        spread: 120,
+        origin: { y: 0.6 },
+        colors: ['#ff4081', '#ff1744', '#880e4f', '#ffffff']
+      });
+    });
+  </script>
 
-  let btnUnlucky = document.createElement("button");
-  btnUnlucky.innerText = "Şanssızım";
-  btnUnlucky.onclick = unluckyClick;
-
-  document.getElementById("options").appendChild(btnLucky);
-  document.getElementById("options").appendChild(btnUnlucky);
-}
-
-// Şanslıyım butonu
-let luckyClicked = 0;
-function luckyClick() {
-  let btn = event.target;
-  luckyClicked++;
-  if (luckyClicked === 1) {
-    btn.classList.add("small"); // Küçülme ve kaybolma animasyonunu başlat
-  } else if (luckyClicked === 2) {
-    btn.classList.add("hidden");
-  }
-}
-
-// Şanssızım butonu
-function unluckyClick() {
-  document.getElementById("text").innerText = "Demek şanssız olduğunu kabul ettin, yoksa kazandın mı? Çünkü diğer seçenekte sana ceza kesmiştim. Tebriklerrr";
-  clearOptions();
-}
-
-// Kötü seçenek
-function bad() {
-  document.getElementById("text").innerText = "Tüh ya üzüldüm ben sana, bu kadar yorma demedim mi?";
-  clearOptions();
-  let btn = document.createElement("button");
-  btn.innerText = "Ekmek parası";
-  btn.onclick = function() {
-    document.getElementById("text").innerText = "Cezalısın! Sabah beni 6:30’da uyandıracaksın";
-    clearOptions();
-  };
-  document.getElementById("options").appendChild(btn);
-}
-</script>
-
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </body>
 </html>
