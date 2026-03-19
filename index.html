@@ -1,163 +1,708 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Mineeee 🫶 En sevdiğim insana sürpriz varrrr</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
-      background-size: 600% 600%;
-      animation: gökkuşağıManyağı 12s ease infinite;
-      font-family: "Comic Sans MS", "Chalkboard SE", cursive;
-      color: #fff;
-      overflow: hidden;
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><text y="36" font-size="42">😈</text></svg>'), auto;
-    }
-
-    @keyframes gökkuşağıManyağı {
-      0% {background-position:0% 50%}
-      50% {background-position:100% 50%}
-      100% {background-position:0% 50%}
-    }
-
-    h1 {
-      font-size: 11vw;
-      text-align: center;
-      margin-top: 12vh;
-      text-shadow: 6px 6px 0 #000, -6px -6px 0 #ff00aa;
-      animation: zıplaVeDön 2.4s infinite;
-      user-select: none;
-    }
-
-    @keyframes zıplaVeDön {
-      0%,100% { transform: translateY(0) rotate(-4deg) scale(1); }
-      50%     { transform: translateY(-40px) rotate(4deg) scale(1.12); }
-    }
-
-    .mesaj {
-      position: absolute;
-      font-size: 7vw;
-      font-weight: bold;
-      color: #ffff00;
-      text-shadow: 0 0 20px #ff00ff, 0 0 40px #000;
-      pointer-events: none;
-      animation: kaybolGel 5s infinite;
-      white-space: nowrap;
-    }
-
-    @keyframes kaybolGel {
-      0%,100% {opacity:0; transform:scale(0.3) translateY(100vh);}
-      20%,80% {opacity:1; transform:scale(1.3) translateY(0);}
-    }
-
-    .buton {
-      position: fixed;
-      left: 50%;
-      top: 70%;
-      transform: translate(-50%, -50%);
-      padding: 35px 90px;
-      font-size: 8vw;
-      font-weight: 900;
-      color: #fff;
-      background: #ff0066;
-      border: 12px solid #00ffff;
-      border-radius: 999px;
-      box-shadow: 0 0 60px #ff00ff, inset 0 0 30px #000;
-      cursor: not-allowed;
-      user-select: none;
-      pointer-events: none;
-      animation: titretKudur 0.18s infinite alternate;
-    }
-
-    @keyframes titretKudur {
-      0%   { transform: translate(-50%, -50%) rotate(-3deg) scale(1); }
-      100% { transform: translate(-48%, -52%) rotate(3deg) scale(1.07); }
-    }
-
-    .yasak-yazi {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14vw;
-      font-weight: 900;
-      color: #ff0044;
-      text-shadow: 0 0 35px black;
-      transform: rotate(-12deg);
-      pointer-events: none;
-      z-index: 999;
-      animation: yasaaaaak 9s infinite;
-    }
-
-    @keyframes yasaaaaak {
-      0%   { transform: rotate(-12deg) scale(1); }
-      50%  { transform: rotate(12deg) scale(1.2); }
-      100% { transform: rotate(-12deg) scale(1); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>✦ Mine ✦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Syne:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06040f;--bg2:#0d0820;--gold:#f5c842;--gold2:#ffeaa0;--rose:#ff4d7d;--rose2:#ff8fab;--teal:#00e5cc;--purple:#9b59f5;--white:#ede8ff;--glass:rgba(255,255,255,0.04);--glass2:rgba(255,255,255,0.09);--border:rgba(255,255,255,0.1);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--white);min-height:100vh;overflow-x:hidden;cursor:none;}
+/* CURSOR */
+#cursor{position:fixed;width:18px;height:18px;border:2px solid var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .18s,height .18s,opacity .18s;mix-blend-mode:difference;}
+#cursor.big{width:46px;height:46px;}
+/* BG CANVAS */
+#bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+/* GRAIN */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:.4;}
+/* LOADING */
+#loadScreen{position:fixed;inset:0;background:var(--bg);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .8s,visibility .8s;}
+#loadScreen.hidden{opacity:0;visibility:hidden;}
+.load-ring{width:72px;height:72px;border:2px solid rgba(255,255,255,0.08);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.load-text{font-family:'Cinzel Decorative',serif;font-size:1rem;color:var(--gold);letter-spacing:6px;opacity:0;animation:fadeIn .6s .5s forwards;}
+@keyframes fadeIn{to{opacity:1;}}
+/* APP */
+#app{position:relative;z-index:2;opacity:0;transition:opacity 1s ease;}
+#app.visible{opacity:1;}
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;position:relative;overflow:hidden;}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:6px;text-transform:uppercase;color:var(--teal);margin-bottom:18px;opacity:0;animation:slideUp .8s .8s forwards;}
+.hero-title{font-family:'Cinzel Decorative',serif;font-size:clamp(3.6rem,18vw,7rem);font-weight:900;line-height:1;background:linear-gradient(135deg,var(--gold) 0%,var(--rose) 50%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px;opacity:0;animation:slideUp .9s .95s forwards;filter:drop-shadow(0 0 40px rgba(245,200,66,0.2));}
+.hero-sub{font-size:.92rem;color:rgba(237,232,255,0.45);letter-spacing:3px;margin-bottom:52px;opacity:0;animation:slideUp .8s 1.1s forwards;}
+@keyframes slideUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;}
+.orb1{width:320px;height:320px;background:var(--purple);top:-100px;right:-120px;opacity:.3;animation:drift 9s ease-in-out infinite alternate;}
+.orb2{width:220px;height:220px;background:var(--rose);bottom:40px;left:-80px;opacity:.25;animation:drift 11s 2s ease-in-out infinite alternate;}
+.orb3{width:160px;height:160px;background:var(--teal);top:45%;left:35%;opacity:.14;animation:drift 7s 1s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:translate(0,0)scale(1);}to{transform:translate(18px,18px)scale(1.08);}}
+.scroll-hint{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 2s forwards;}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);animation:linePulse 2s infinite;}
+@keyframes linePulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+.scroll-label{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:4px;color:rgba(255,255,255,0.25);}
+/* CHAPTER */
+.chapter{padding:80px 20px;max-width:460px;margin:0 auto;position:relative;}
+.chapter-label{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:5px;color:var(--teal);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:12px;}
+.chapter-label::before{content:'';display:inline-block;width:28px;height:1px;background:var(--teal);}
+.chapter-title{font-family:'Cinzel Decorative',serif;font-size:clamp(1.4rem,6vw,2.2rem);font-weight:700;margin-bottom:8px;line-height:1.2;}
+.chapter-desc{font-size:.86rem;color:rgba(237,232,255,0.45);line-height:1.75;margin-bottom:32px;}
+/* GLASS CARD */
+.glass-card{background:var(--glass);border:1px solid var(--border);border-radius:20px;padding:26px 20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:relative;overflow:hidden;}
+.glass-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent);}
+/* BUTTONS */
+.gold-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px 26px;background:linear-gradient(135deg,var(--gold),#e0920a);color:#1a0800;border:none;border-radius:50px;font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;cursor:pointer;letter-spacing:.5px;box-shadow:0 0 28px rgba(245,200,66,0.28),0 4px 18px rgba(0,0,0,0.4);transition:transform .15s,box-shadow .15s;margin-top:12px;overflow:hidden;position:relative;}
+.gold-btn::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:rgba(255,255,255,0.22);transform:skewX(-20deg);transition:left .4s;}
+.gold-btn:hover::after,.gold-btn:active::after{left:120%;}
+.gold-btn:active{transform:scale(.97);}
+.ghost-btn{display:flex;align-items:center;justify-content:center;width:100%;padding:13px 22px;background:var(--glass);color:var(--white);border:1px solid var(--border);border-radius:50px;font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;margin-top:10px;transition:background .2s,border-color .2s;}
+.ghost-btn:hover,.ghost-btn:active{background:var(--glass2);border-color:var(--gold);color:var(--gold);}
+/* NAV DOTS */
+.nav-dots{position:fixed;right:12px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:1000;}
+.nav-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;transition:background .25s,transform .25s;}
+.nav-dot.active{background:var(--gold);transform:scale(1.7);}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:none;}
+/* SPARK */
+.spark{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;animation:sparkFly .65s forwards;}
+@keyframes sparkFly{from{opacity:1;transform:translate(0,0)scale(1);}to{opacity:0;transform:translate(var(--tx),var(--ty))scale(0);}}
+/* STAR BURST */
+.star-burst{position:fixed;pointer-events:none;z-index:9998;font-size:1.3rem;animation:burst .95s forwards;}
+@keyframes burst{0%{opacity:1;transform:translate(0,0)scale(.5)rotate(0deg);}100%{opacity:0;transform:translate(var(--bx),var(--by))scale(1.5)rotate(var(--br));}}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(6,4,15,0.88);z-index:5000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(10px);}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#0d0820;border:1px solid var(--border);border-radius:22px;padding:32px 26px;text-align:center;max-width:310px;width:100%;position:relative;overflow:hidden;animation:modalPop .35s cubic-bezier(.34,1.56,.64,1);}
+.modal-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+@keyframes modalPop{from{transform:scale(.72)translateY(18px);opacity:0;}}
+.modal-icon{font-size:3.2rem;margin-bottom:14px;}
+.modal-title{font-family:'Cinzel Decorative',serif;font-size:1.15rem;color:var(--gold);margin-bottom:8px;}
+.modal-body{font-size:.85rem;color:rgba(237,232,255,0.55);line-height:1.75;margin-bottom:22px;}
+.modal-close{background:linear-gradient(135deg,var(--gold),#e08820);color:#1a0800;border:none;border-radius:50px;padding:12px 30px;font-family:'Syne',sans-serif;font-size:.92rem;font-weight:800;cursor:pointer;box-shadow:0 0 22px rgba(245,200,66,0.28);}
+/* GAME 1 - YILDIZ */
+#starField{position:relative;height:290px;border-radius:14px;background:radial-gradient(ellipse at center,#110825 0%,#06040f 100%);overflow:hidden;border:1px solid var(--border);touch-action:none;}
+.catch-star{position:absolute;font-size:2rem;cursor:pointer;filter:drop-shadow(0 0 12px var(--gold));animation:starPulse 1.6s ease-in-out infinite;user-select:none;touch-action:none;transition:top .18s cubic-bezier(.25,.46,.45,.94),left .18s cubic-bezier(.25,.46,.45,.94);}
+@keyframes starPulse{0%,100%{filter:drop-shadow(0 0 8px var(--gold));}50%{filter:drop-shadow(0 0 28px var(--gold))drop-shadow(0 0 6px #fff);}}
+.star-taunt{position:absolute;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--rose);pointer-events:none;animation:tauntFade 1.3s forwards;white-space:nowrap;letter-spacing:1px;}
+@keyframes tauntFade{0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(-28px);}}
+#star-counter{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--teal);letter-spacing:3px;margin-top:11px;text-align:center;}
+/* GAME 2 - ŞİFRE */
+.code-display{background:#000;border:1px solid var(--teal);border-radius:12px;padding:16px;text-align:center;font-family:'Space Mono',monospace;font-size:2.1rem;letter-spacing:8px;color:var(--teal);margin-bottom:14px;box-shadow:0 0 18px rgba(0,229,204,0.12) inset;position:relative;overflow:hidden;}
+.code-display::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(0,229,204,0.06),transparent);animation:scanline 2.2s linear infinite;}
+@keyframes scanline{to{left:160%;}}
+.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:4px;}
+.num-key{aspect-ratio:1;background:var(--glass);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--white);cursor:pointer;transition:background .14s,border-color .14s,transform .1s;user-select:none;}
+.num-key:active{background:rgba(245,200,66,0.15);border-color:var(--gold);transform:scale(.93);}
+.num-key.del{color:var(--rose);}
+#code-status{font-family:'Space Mono',monospace;font-size:.74rem;text-align:center;min-height:18px;margin-top:11px;letter-spacing:2px;}
+#code-status.ok{color:var(--teal);}
+#code-status.err{color:var(--rose);}
+/* GAME 3 - BALON */
+#bubbleArena{position:relative;height:310px;border-radius:14px;background:radial-gradient(ellipse at 30% 70%,#1a0033 0%,#06040f 100%);border:1px solid var(--border);overflow:hidden;touch-action:none;}
+.bubble{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;font-family:'Space Mono',monospace;cursor:pointer;animation:bubbleRise linear forwards;user-select:none;border:2px solid rgba(255,255,255,0.18);transition:transform .1s;}
+@keyframes bubbleRise{from{opacity:1;}to{transform:translateY(-360px)scale(.7);opacity:0;}}
+.bubble.pop{animation:bubblePop .22s forwards!important;}
+@keyframes bubblePop{0%{transform:scale(1);opacity:1;}60%{transform:scale(1.55);opacity:.5;}100%{transform:scale(0);opacity:0;}}
+#bubble-info{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:2px;text-align:center;margin-top:10px;}
+#bubble-score{color:var(--purple);}
+#bubble-timer{color:var(--rose);margin-top:3px;}
+/* GAME 4 - SIMON */
+.simon-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:14px;}
+.simon-btn{aspect-ratio:1;border-radius:16px;border:none;cursor:pointer;position:relative;overflow:hidden;transition:filter .12s,transform .12s,opacity .12s;opacity:.35;}
+.simon-btn.lit,.simon-btn.active{opacity:1;}
+.simon-btn.lit{filter:brightness(1.9)saturate(1.4);transform:scale(.95);}
+.simon-btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.14);opacity:0;transition:opacity .1s;}
+.simon-btn.lit::after,.simon-btn:active::after{opacity:1;}
+#s1{background:linear-gradient(135deg,#ff4d7d,#cc0033);}
+#s2{background:linear-gradient(135deg,var(--teal),#009e8a);}
+#s3{background:linear-gradient(135deg,#f5c842,#d06800);}
+#s4{background:linear-gradient(135deg,var(--purple),#4a00bb);}
+#simon-level{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:3px;text-align:center;color:rgba(255,255,255,0.3);margin-bottom:11px;}
+#simon-status{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:2px;text-align:center;min-height:18px;color:var(--gold2);}
+/* GAME 5 - LAZER */
+#lazerCanvas{display:block;width:100%;border-radius:14px;border:1px solid rgba(0,229,204,0.25);box-shadow:0 0 28px rgba(0,229,204,0.07);touch-action:none;cursor:none;}
+#lazer-score{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:3px;text-align:center;color:var(--teal);margin-top:10px;}
+#lazer-msg{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:2px;text-align:center;color:var(--rose);min-height:17px;margin-top:5px;}
+/* FOOTER */
+footer{text-align:center;padding:60px 20px 90px;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:4px;color:rgba(255,255,255,0.12);}
+footer span{color:var(--rose);}
+</style>
 </head>
 <body>
+<div id="cursor"></div>
+<canvas id="bgCanvas"></canvas>
+<div id="loadScreen">
+  <div class="load-ring"></div>
+  <div class="load-text">M I N E</div>
+</div>
+<nav class="nav-dots" id="navDots">
+  <div class="nav-dot active"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+</nav>
+<div id="app">
+  <!-- HERO -->
+  <section class="hero" id="s-hero">
+    <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+    <div class="hero-eyebrow">✦ sadece sana özel ✦</div>
+    <h1 class="hero-title">Mine</h1>
+    <p class="hero-sub">Senin için bir evren inşa ettik.</p>
+    <div class="scroll-hint"><div class="scroll-line"></div><div class="scroll-label">keşfet</div></div>
+  </section>
 
-  <div class="yasak-yazi">TIKLAMA MİNE TIKLAMA LAN 🤬</div>
+  <!-- G1 -->
+  <section class="chapter reveal" id="s-g1">
+    <div class="chapter-label">01 — YILDIZ AVI</div>
+    <h2 class="chapter-title">Yıldıza Doku</h2>
+    <p class="chapter-desc">Bu kadar basit. Sadece yıldıza dokunman yeterli. Ya da öyle mi?</p>
+    <div class="glass-card">
+      <div id="starField"></div>
+      <div id="star-counter">DENEME — 0</div>
+      <button class="ghost-btn" onclick="resetStarGame()">↺ Yeniden</button>
+    </div>
+  </section>
 
-  <h1>MİNE MİNE MİNE MİNE MİNEEEE</h1>
+  <!-- G2 -->
+  <section class="chapter reveal" id="s-g2">
+    <div class="chapter-label">02 — ŞİFRE KIRICI</div>
+    <h2 class="chapter-title">Doğru Kodu Bul</h2>
+    <p class="chapter-desc">4 haneli gizli kod var. Kır bakalım. Her yanlışta belki bir şeyler değişir...</p>
+    <div class="glass-card">
+      <div class="code-display" id="codeDisplay">_ _ _ _</div>
+      <div class="numpad" id="numpad"></div>
+      <div id="code-status">KODU GİR</div>
+    </div>
+  </section>
 
-  <div class="buton" id="fakeButon">BURAYA BAS BAKALIM 😏</div>
+  <!-- G3 -->
+  <section class="chapter reveal" id="s-g3">
+    <div class="chapter-label">03 — BALON PATLATICI</div>
+    <h2 class="chapter-title">Patlat Onları</h2>
+    <p class="chapter-desc">20 saniyede yükselen balonları patlat. Bazıları kaçacak. Hazır mısın?</p>
+    <div class="glass-card">
+      <div id="bubbleArena"></div>
+      <div id="bubble-info">
+        <div id="bubble-score">PUAN — 0</div>
+        <div id="bubble-timer">⏱ BALON PATLAT VE BAŞLA</div>
+      </div>
+      <button class="ghost-btn" onclick="resetBubbles()">↺ Yeniden</button>
+    </div>
+  </section>
 
-  <script>
-    const sacmaMesajlar = [
-      "Mine sen yine mi bastın ya 😂😂",
-      "Aaa Mine sinirleniyo galiba hihihi",
-      "Mineee dur öptüm ama basmaya devam ediyosun",
-      "50 kere daha basarsan belki söylerim sırrı 🤫",
-      "Mine bu kadar tıklama enerjini spora harcasana ya",
-      "Hala basıyo lan bu kız 😂 pes etmiyo",
-      "Mineeee yeter artık sinir oldum ben şimdi",
-      "Tamam basmaya devam et bakalım ne olacak",
-      "Mine senin yüzünden sayfa çökücek şimdi",
-      "Hala burda mısın ya git işine bak 😤",
-      "Mine en sinir bozucu arkadaş ödülü sana gidiyor 🏆",
-      "Bas bas bas bas bas bas bas bas bas bas",
-      "Mineee yeter ulan sinir krizi geçiricem"
-    ];
+  <!-- G4 -->
+  <section class="chapter reveal" id="s-g4">
+    <div class="chapter-label">04 — HAFIZA SEKÂNSI</div>
+    <h2 class="chapter-title">Tekrar Et</h2>
+    <p class="chapter-desc">Işıkları sırayla takip et. Her turda bir adım eklenir. Ne kadar gidebilirsin?</p>
+    <div class="glass-card">
+      <div id="simon-level">SEVİYE — 0</div>
+      <div class="simon-grid">
+        <button class="simon-btn" id="s1" data-i="0"></button>
+        <button class="simon-btn" id="s2" data-i="1"></button>
+        <button class="simon-btn" id="s3" data-i="2"></button>
+        <button class="simon-btn" id="s4" data-i="3"></button>
+      </div>
+      <div id="simon-status">BAŞLAMAK İÇİN DOKUN</div>
+      <button class="gold-btn" onclick="startSimon()">▶ BAŞLAT</button>
+    </div>
+  </section>
 
-    let tikSayisi = 0;
+  <!-- G5 -->
+  <section class="chapter reveal" id="s-g5">
+    <div class="chapter-label">05 — LAZER DODGE</div>
+    <h2 class="chapter-title">Lazere Değme</h2>
+    <p class="chapter-desc">Parmağınla topunu kontrol et. Lazerlere çarpmadan ne kadar dayanabilirsin?</p>
+    <div class="glass-card">
+      <canvas id="lazerCanvas" width="360" height="280"></canvas>
+      <div id="lazer-score">SÜRE — 0.0s</div>
+      <div id="lazer-msg">BAŞLAMAK İÇİN DOKUN</div>
+      <button class="ghost-btn" onclick="resetLazer()">↺ Yeniden</button>
+    </div>
+  </section>
 
-    document.body.addEventListener('click', (e) => {
-      tikSayisi++;
+  <footer>MADE WITH <span>♥</span> SADECE SENİN İÇİN · MINE</footer>
+</div>
 
-      // Her tıklamada rastgele yerde saçma mesaj çıkar
-      const msg = document.createElement('div');
-      msg.className = 'mesaj';
-      msg.textContent = sacmaMesajlar[Math.floor(Math.random() * sacmaMesajlar.length)];
-      msg.style.left = Math.random() * 90 + 'vw';
-      msg.style.top = Math.random() * 70 + 'vh';
-      msg.style.animationDelay = Math.random() * 2 + 's';
-      document.body.appendChild(msg);
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-icon" id="mIcon">✦</div>
+    <div class="modal-title" id="mTitle"></div>
+    <div class="modal-body" id="mBody"></div>
+    <button class="modal-close" onclick="closeModal()">Devam Et</button>
+  </div>
+</div>
 
-      setTimeout(() => msg.remove(), 6000);
+<script>
+/* ── UTILS ── */
+let modalCb=null;
+function showModal(icon,title,body,cb){
+  document.getElementById('mIcon').textContent=icon;
+  document.getElementById('mTitle').textContent=title;
+  document.getElementById('mBody').textContent=body;
+  modalCb=cb||null;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  if(modalCb){modalCb();modalCb=null;}
+}
+function spawnSparks(x,y,col){
+  col=col||'#f5c842';
+  for(let i=0;i<10;i++){
+    const s=document.createElement('div');
+    s.className='spark';
+    const a=Math.random()*Math.PI*2,d=30+Math.random()*60;
+    s.style.cssText=`left:${x}px;top:${y}px;width:${4+Math.random()*5}px;height:${4+Math.random()*5}px;background:${col};--tx:${Math.cos(a)*d}px;--ty:${Math.sin(a)*d}px;animation-duration:${.35+Math.random()*.45}s;`;
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),800);
+  }
+}
+function spawnBurst(x,y){
+  const emojis=['✦','★','✧','⭐','💫','✨'];
+  for(let i=0;i<12;i++){
+    const b=document.createElement('div');b.className='star-burst';
+    const a=(i/12)*Math.PI*2,d=60+Math.random()*90;
+    b.style.cssText=`left:${x}px;top:${y}px;--bx:${Math.cos(a)*d}px;--by:${Math.sin(a)*d}px;--br:${Math.random()*360}deg;animation-delay:${Math.random()*.18}s;`;
+    b.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),1100);
+  }
+}
 
-      // 8. tıklamadan sonra başlık değişmeye başlar
-      if (tikSayisi > 7) {
-        document.querySelector('h1').innerHTML = "MİNE DUR ARTIK YA" + " 😡".repeat(Math.min(tikSayisi-7, 8));
-      }
+/* ── LOAD ── */
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('loadScreen').classList.add('hidden');
+    document.getElementById('app').classList.add('visible');
+    initBgCanvas();
+    initStarGame();
+    initCode();
+    initBubbles();
+    initSimon();
+    initLazer();
+    initReveal();
+    initCursor();
+    initNavDots();
+  },1300);
+});
 
-      // 20 tık sonra buton küçülmeye başlar (psikolojik savaş)
-      if (tikSayisi > 20) {
-        const btn = document.getElementById('fakeButon');
-        btn.style.transform = `translate(-50%, -50%) scale(${Math.max(0.3, 1 - (tikSayisi-20)*0.04)})`;
-      }
+/* ── CURSOR ── */
+function initCursor(){
+  const cur=document.getElementById('cursor');
+  document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+  document.addEventListener('touchmove',e=>{cur.style.left=e.touches[0].clientX+'px';cur.style.top=e.touches[0].clientY+'px';},{passive:true});
+  document.querySelectorAll('button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+    el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+  });
+}
 
-      // 35 tık sonra ekran sallanır
-      if (tikSayisi === 35) {
-        document.body.style.animation = 'salla 0.4s infinite';
-        document.body.insertAdjacentHTML('beforeend', `<style>@keyframes salla { 0%,100%{transform:translate(0,0)} 25%{transform:translate(-12px,8px)} 50%{transform:translate(12px,-8px)} 75%{transform:translate(-8px,12px)} }</style>`);
-      }
+/* ── BG CANVAS ── */
+function initBgCanvas(){
+  const c=document.getElementById('bgCanvas');
+  const ctx=c.getContext('2d');
+  let W,H,stars=[];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  for(let i=0;i<120;i++)stars.push({x:Math.random()*9999,y:Math.random()*9999,r:.2+Math.random()*1.1,a:Math.random(),aD:Math.random()>.5?1:-1,speed:.04+Math.random()*.08});
+  (function loop(){
+    ctx.clearRect(0,0,W,H);
+    stars.forEach(s=>{
+      s.a+=s.aD*s.speed*.06;if(s.a>1||s.a<0)s.aD*=-1;
+      ctx.beginPath();ctx.arc(s.x%W,s.y%H,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${s.a*.65})`;ctx.fill();
     });
-  </script>
+    requestAnimationFrame(loop);
+  })();
+}
 
+/* ── NAV DOTS ── */
+function initNavDots(){
+  const secs=['s-hero','s-g1','s-g2','s-g3','s-g4','s-g5'].map(id=>document.getElementById(id));
+  const dots=document.querySelectorAll('.nav-dot');
+  dots.forEach((dot,i)=>{
+    dot.addEventListener('click',()=>secs[i]?.scrollIntoView({behavior:'smooth'}));
+  });
+  window.addEventListener('scroll',()=>{
+    const cy=window.innerHeight/2;
+    secs.forEach((s,i)=>{
+      if(!s)return;
+      const r=s.getBoundingClientRect();
+      dots[i].classList.toggle('active',r.top<=cy&&r.bottom>cy);
+    });
+  },{passive:true});
+}
+
+/* ── REVEAL ── */
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.18});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+/* ═══════════ GAME 1 – KAÇAN YILDIZ ═══════════ */
+let starTries=0,starCaught=false;
+const taunts=['Neredeyim? 🌟','Ahh az kaldı!','Daha hızlı!','Hayır hayır...','Ama neden? 😂','Geri döndüm 👋','Beni yakala!','Üzgünüm 😇','Neredeyim ben? 🙃','Sanki yakalayacaksın!'];
+
+function initStarGame(){
+  const field=document.getElementById('starField');
+  field.innerHTML='';
+  const star=document.createElement('div');
+  star.className='catch-star';star.textContent='⭐';star.id='catchStar';
+  field.appendChild(star);
+  placeStar(true);
+  field.addEventListener('mousemove',checkStarProx);
+  field.addEventListener('touchmove',e=>checkStarProx({clientX:e.touches[0].clientX,clientY:e.touches[0].clientY}),{passive:true});
+  star.addEventListener('click',()=>catchStar());
+  star.addEventListener('touchstart',e=>{e.preventDefault();catchStar();},{passive:false});
+}
+
+function placeStar(instant){
+  const star=document.getElementById('catchStar');
+  const field=document.getElementById('starField');
+  if(!star||!field)return;
+  if(instant){star.style.transition='none';}else{star.style.transition='top .18s cubic-bezier(.25,.46,.45,.94),left .18s cubic-bezier(.25,.46,.45,.94)';}
+  const fw=field.clientWidth-55,fh=field.clientHeight-55;
+  star.style.left=(10+Math.random()*fw)+'px';
+  star.style.top=(10+Math.random()*fh)+'px';
+}
+
+function checkStarProx(e){
+  if(starCaught)return;
+  const star=document.getElementById('catchStar');
+  if(!star)return;
+  const sr=star.getBoundingClientRect();
+  const cx=sr.left+sr.width/2,cy=sr.top+sr.height/2;
+  if(Math.hypot(e.clientX-cx,e.clientY-cy)<78){
+    starTries++;
+    document.getElementById('star-counter').textContent='DENEME — '+starTries;
+    spawnStarTaunt(sr);
+    placeStar(false);
+  }
+}
+
+function spawnStarTaunt(sr){
+  const field=document.getElementById('starField');
+  const fr=field.getBoundingClientRect();
+  const t=document.createElement('div');t.className='star-taunt';
+  t.textContent=taunts[starTries%taunts.length];
+  t.style.left=Math.max(0,sr.left-fr.left-10)+'px';
+  t.style.top=Math.max(0,sr.top-fr.top-10)+'px';
+  field.appendChild(t);
+  setTimeout(()=>t.remove(),1300);
+}
+
+function catchStar(){
+  if(starCaught)return;
+  if(Math.random()<.9&&starTries<9){starTries++;document.getElementById('star-counter').textContent='DENEME — '+starTries;placeStar(false);return;}
+  starCaught=true;
+  const star=document.getElementById('catchStar');
+  const r=star.getBoundingClientRect();
+  spawnBurst(r.left+r.width/2,r.top+r.height/2);
+  star.style.animation='none';star.style.filter='drop-shadow(0 0 40px gold)';star.style.transform='scale(1.8)';
+  setTimeout(()=>showModal('⭐','Yakaladın!','Vay be! '+starTries+' denemede başardın! Yıldız sana aitti.'),500);
+}
+
+function resetStarGame(){
+  starTries=0;starCaught=false;
+  const field=document.getElementById('starField');
+  field.innerHTML='';
+  document.getElementById('star-counter').textContent='DENEME — 0';
+  initStarGame();
+}
+
+/* ═══════════ GAME 2 – ŞİFRE ═══════════ */
+let secretCode=[],inputCode=[],codeAttempts=0,codeWon=false;
+const wrongMsgs=['YANLIŞ — TEKRAR DENE','BİR DAHA...','HAYIR.','NEREDEYSE? BELKİ.','FARKLI DÜŞÜN','EMİN MİSİN?','ÇOK YAKIN... BELKI'];
+
+function initCode(){
+  secretCode=Array.from({length:4},()=>Math.floor(Math.random()*10));
+  inputCode=[];codeAttempts=0;codeWon=false;
+  renderCode();
+  const np=document.getElementById('numpad');np.innerHTML='';
+  [1,2,3,4,5,6,7,8,9,'←',0,'✓'].forEach(k=>{
+    const btn=document.createElement('div');btn.className='num-key';
+    if(k==='←')btn.classList.add('del');
+    btn.textContent=k;
+    const act=()=>{
+      if(k==='←')delNum();
+      else if(k==='✓')checkCode();
+      else pressNum(Number(k));
+    };
+    btn.addEventListener('click',act);
+    btn.addEventListener('touchstart',e=>{e.preventDefault();act();},{passive:false});
+    np.appendChild(btn);
+  });
+}
+function renderCode(){
+  const slots=Array.from({length:4},(_,i)=>inputCode[i]!==undefined?inputCode[i]:'_');
+  document.getElementById('codeDisplay').textContent=slots.join('  ');
+}
+function pressNum(n){if(codeWon||inputCode.length>=4)return;inputCode.push(n);renderCode();}
+function delNum(){inputCode.pop();renderCode();}
+function checkCode(){
+  if(codeWon||inputCode.length<4)return;
+  codeAttempts++;
+  const el=document.getElementById('code-status');
+  if(inputCode.every((v,i)=>v===secretCode[i])){
+    codeWon=true;el.textContent='✓ DOĞRU KOD';el.className='ok';
+    spawnSparks(window.innerWidth/2,200,'#00e5cc');
+    setTimeout(()=>showModal('🔓','Kırdın!',codeAttempts+' denemede başardın!'),500);
+  }else{
+    el.textContent=wrongMsgs[codeAttempts%wrongMsgs.length];el.className='err';
+    // Her 3 yanlışta kodu değiştir (söyleme)
+    if(codeAttempts%3===0){
+      secretCode=Array.from({length:4},()=>Math.floor(Math.random()*10));
+      const d=document.getElementById('codeDisplay');
+      d.style.borderColor='#ff4d7d';setTimeout(()=>d.style.borderColor='var(--teal)',700);
+    }
+    inputCode=[];setTimeout(renderCode,80);
+  }
+}
+
+/* ═══════════ GAME 3 – BALON ═══════════ */
+let bScore=0,bTime=20,bStarted=false,bInt=null,bTInt=null;
+const bColors=['#ff4d7d','#9b59f5','#f5c842','#00e5cc','#ff8fab','#7bed9f'];
+
+function initBubbles(){
+  document.getElementById('bubbleArena').innerHTML='';
+  bScore=0;bTime=20;bStarted=false;
+  clearInterval(bInt);clearInterval(bTInt);
+  document.getElementById('bubble-score').textContent='PUAN — 0';
+  document.getElementById('bubble-timer').textContent='⏱ BALON PATLAT VE BAŞLA';
+}
+function startBubbles(){
+  if(bStarted)return;bStarted=true;
+  bInt=setInterval(spawnBub,680);
+  bTInt=setInterval(()=>{
+    bTime--;
+    document.getElementById('bubble-timer').textContent='⏱ '+bTime+'s';
+    if(bTime<=0){
+      clearInterval(bInt);clearInterval(bTInt);
+      document.getElementById('bubbleArena').querySelectorAll('.bubble').forEach(b=>b.remove());
+      const r=bScore<10?'Uykusuz musun? 😴':bScore<22?'Fena değil 🙂':bScore<38?'Hızlı eller! ⚡':'MAKINE! 🤖';
+      showModal('🎈','Süre Bitti!',bScore+' balon patlattın. '+r);
+    }
+  },1000);
+}
+function spawnBub(){
+  const arena=document.getElementById('bubbleArena');
+  if(!arena)return;
+  const b=document.createElement('div');b.className='bubble';
+  const size=42+Math.random()*36;
+  const col=bColors[Math.floor(Math.random()*bColors.length)];
+  const dur=2.6+Math.random()*2;
+  const pts=Math.floor(2+Math.random()*6);
+  b.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*(arena.clientWidth-size)}px;bottom:-${size}px;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.28),${col}75);border-color:${col};color:#fff;font-size:${size/4.2}px;animation-duration:${dur}s;`;
+  b.textContent=pts;
+  const pop=e=>{
+    if(b.classList.contains('pop'))return;
+    if(!bStarted)startBubbles();
+    b.classList.add('pop');bScore+=pts;
+    document.getElementById('bubble-score').textContent='PUAN — '+bScore;
+    const r=b.getBoundingClientRect();
+    spawnSparks(r.left+r.width/2,r.top+r.height/2,'#f5c842');
+    setTimeout(()=>b.remove(),250);
+  };
+  b.addEventListener('click',pop);
+  b.addEventListener('touchstart',e=>{e.preventDefault();pop();},{passive:false});
+  arena.appendChild(b);
+  setTimeout(()=>b.remove(),dur*1000+120);
+}
+function resetBubbles(){clearInterval(bInt);clearInterval(bTInt);initBubbles();}
+
+/* ═══════════ GAME 4 – SIMON ═══════════ */
+let sSeq=[],sPlayer=[],sLevel=0,sAccepting=false;
+function initSimon(){
+  ['s1','s2','s3','s4'].forEach((id,i)=>{
+    const btn=document.getElementById(id);
+    const act=()=>{if(!sAccepting)return;simonInput(i);};
+    btn.addEventListener('click',act);
+    btn.addEventListener('touchstart',e=>{e.preventDefault();act();},{passive:false});
+  });
+}
+function startSimon(){sSeq=[];sLevel=0;simonNextRound();}
+function simonNextRound(){
+  sAccepting=false;sPlayer=[];
+  sSeq.push(Math.floor(Math.random()*4));sLevel++;
+  document.getElementById('simon-level').textContent='SEVİYE — '+sLevel;
+  document.getElementById('simon-status').textContent='İZLE...';
+  let k=0;
+  (function play(){
+    if(k>=sSeq.length){setTimeout(()=>{sAccepting=true;document.getElementById('simon-status').textContent='SIRANIN SENİN ↓';},400);return;}
+    const btn=document.getElementById(['s1','s2','s3','s4'][sSeq[k]]);
+    btn.classList.add('lit');
+    setTimeout(()=>{btn.classList.remove('lit');k++;setTimeout(play,220);},480);
+  })();
+}
+function simonInput(i){
+  const btn=document.getElementById(['s1','s2','s3','s4'][i]);
+  btn.classList.add('lit');setTimeout(()=>btn.classList.remove('lit'),200);
+  sPlayer.push(i);
+  const pos=sPlayer.length-1;
+  if(sPlayer[pos]!==sSeq[pos]){
+    sAccepting=false;
+    document.getElementById('simon-status').textContent='YANLIŞ! SEVİYE '+sLevel+' ✗';
+    ['s1','s2','s3','s4'].forEach(id=>{const b=document.getElementById(id);b.classList.add('lit');setTimeout(()=>b.classList.remove('lit'),380);});
+    setTimeout(()=>showModal('💫','Yanlış!','Seviye '+sLevel+"'de takıldın. Tekrar dene!",startSimon),650);
+    return;
+  }
+  if(sPlayer.length===sSeq.length){
+    sAccepting=false;
+    document.getElementById('simon-status').textContent='✓ DOĞRU!';
+    spawnSparks(window.innerWidth/2,180,'#9b59f5');
+    if(sLevel>=8)setTimeout(()=>showModal('🏆','EFSANEVİ!','Seviye 8\'i tamamladın! Hafıza canavarısın!'),400);
+    else setTimeout(simonNextRound,800);
+  }
+}
+
+/* ═══════════ GAME 5 – LAZER DODGE ═══════════ */
+let lzRunning=false,lzStart=0,lzAnim=null,lzDiff=1;
+let pX,pY,lazers=[],lzTX=null,lzTY=null,lzSpawnTO=null;
+
+function initLazer(){
+  const canvas=document.getElementById('lazerCanvas');
+  const pw=canvas.parentElement.getBoundingClientRect().width-40;
+  canvas.width=Math.min(pw,360);canvas.height=280;
+  pX=canvas.width/2;pY=canvas.height-40;
+  lazers=[];lzRunning=false;
+  document.getElementById('lazer-score').textContent='SÜRE — 0.0s';
+  document.getElementById('lazer-msg').textContent='BAŞLAMAK İÇİN DOKUN';
+  drawLzIdle();
+  canvas.addEventListener('touchstart',e=>{e.preventDefault();lzTX=e.touches[0].clientX-canvas.getBoundingClientRect().left;lzTY=e.touches[0].clientY-canvas.getBoundingClientRect().top;if(!lzRunning)startLazer();},{passive:false});
+  canvas.addEventListener('touchmove',e=>{e.preventDefault();lzTX=e.touches[0].clientX-canvas.getBoundingClientRect().left;lzTY=e.touches[0].clientY-canvas.getBoundingClientRect().top;},{passive:false});
+  canvas.addEventListener('touchend',()=>{lzTX=null;lzTY=null;},{passive:true});
+  canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();lzTX=e.clientX-r.left;lzTY=e.clientY-r.top;if(!lzRunning)startLazer();});
+}
+
+function startLazer(){
+  lzRunning=true;lazers=[];lzDiff=1;lzStart=Date.now();
+  document.getElementById('lazer-msg').textContent='HAYATTA KAL!';
+  scheduleLz();lzLoop();
+}
+
+function scheduleLz(){
+  if(!lzRunning)return;
+  const canvas=document.getElementById('lazerCanvas');
+  const w=canvas.width,h=canvas.height;
+  const types=['h','v','d1','d2'];
+  lazers.push({
+    type:types[Math.floor(Math.random()*types.length)],
+    pos:(types[Math.floor(Math.random()*types.length)]==='h'?Math.random()*h:Math.random()*w),
+    spd:(1.4+lzDiff*.4)*(Math.random()>.5?1:-1),
+    w:2.5+Math.random()*2,alpha:0,born:Date.now()
+  });
+  // random pos fix
+  const lz=lazers[lazers.length-1];
+  if(lz.type==='h')lz.pos=15+Math.random()*(h-30);
+  else lz.pos=15+Math.random()*(w-30);
+  lzSpawnTO=setTimeout(scheduleLz,Math.max(380,1500-lzDiff*120));
+}
+
+function lzLoop(){
+  if(!lzRunning)return;
+  const canvas=document.getElementById('lazerCanvas');
+  const ctx=canvas.getContext('2d');
+  const w=canvas.width,h=canvas.height;
+  const now=Date.now(),elapsed=(now-lzStart)/1000;
+  lzDiff=1+Math.floor(elapsed/4)*.45;
+
+  // Move player
+  if(lzTX!==null&&lzTY!==null){
+    const spd=10;const dx=lzTX-pX,dy=lzTY-pY;const dist=Math.hypot(dx,dy);
+    if(dist>spd){pX+=dx/dist*spd;pY+=dy/dist*spd;}else{pX=lzTX;pY=lzTY;}
+  }
+  pX=Math.max(10,Math.min(w-10,pX));pY=Math.max(10,Math.min(h-10,pY));
+
+  // Update lazers
+  lazers.forEach(lz=>{
+    lz.pos+=lz.spd;lz.alpha=Math.min(1,(now-lz.born)/280);
+    if(lz.type==='h'&&(lz.pos<0||lz.pos>h))lz.spd*=-1;
+    if((lz.type==='v'||lz.type==='d1'||lz.type==='d2')&&(lz.pos<0||lz.pos>w))lz.spd*=-1;
+  });
+
+  ctx.clearRect(0,0,w,h);
+  ctx.fillStyle='#06040f';ctx.fillRect(0,0,w,h);
+  // grid
+  ctx.strokeStyle='rgba(0,229,204,0.04)';ctx.lineWidth=1;
+  for(let x=0;x<w;x+=28){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();}
+  for(let y=0;y<h;y+=28){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();}
+
+  // Draw lazers & check collision
+  let hit=false;
+  const tol=11;
+  lazers.forEach(lz=>{
+    if(lz.alpha<.1)return;
+    ctx.save();
+    ctx.shadowColor='#ff4d7d';ctx.shadowBlur=14;
+    ctx.strokeStyle=`rgba(255,77,125,${lz.alpha})`;ctx.lineWidth=lz.w;
+    ctx.beginPath();
+    if(lz.type==='h'){ctx.moveTo(0,lz.pos);ctx.lineTo(w,lz.pos);if(Math.abs(pY-lz.pos)<tol)hit=true;}
+    else if(lz.type==='v'){ctx.moveTo(lz.pos,0);ctx.lineTo(lz.pos,h);if(Math.abs(pX-lz.pos)<tol)hit=true;}
+    else if(lz.type==='d1'){
+      ctx.moveTo(lz.pos,0);ctx.lineTo(lz.pos+h,h);
+      const d=Math.abs((h)*pX-h*lz.pos-(lz.pos+h-lz.pos)*pY+h*(lz.pos+h-lz.pos)*0)/Math.hypot(h,h);
+      // simpler: distance from point to diagonal line
+      const dist2=Math.abs(pX-pY-lz.pos)/Math.SQRT2;
+      if(dist2<tol)hit=true;
+    }
+    else{
+      ctx.moveTo(lz.pos,0);ctx.lineTo(lz.pos-h,h);
+      const dist2=Math.abs(pX+pY-lz.pos)/Math.SQRT2;
+      if(dist2<tol)hit=true;
+    }
+    ctx.stroke();ctx.restore();
+  });
+
+  // Player
+  ctx.save();
+  ctx.shadowColor='#00e5cc';ctx.shadowBlur=22;
+  ctx.beginPath();ctx.arc(pX,pY,9,0,Math.PI*2);
+  ctx.fillStyle='#00e5cc';ctx.fill();
+  ctx.restore();
+
+  document.getElementById('lazer-score').textContent='SÜRE — '+elapsed.toFixed(1)+'s';
+
+  if(hit){
+    lzRunning=false;clearTimeout(lzSpawnTO);
+    ctx.fillStyle='rgba(255,77,125,0.35)';ctx.fillRect(0,0,w,h);
+    const r=elapsed<3?'Eh... 😬':elapsed<7?'İdare eder 😌':elapsed<13?'Fena değil! ⚡':elapsed<20?'Muhteşem! 🔥':'MAKINE! 🤖';
+    document.getElementById('lazer-msg').textContent='VURULDUN!';
+    setTimeout(()=>showModal('💥','Vuruldun!',elapsed.toFixed(1)+' saniye dayandın. '+r),480);
+    return;
+  }
+  lzAnim=requestAnimationFrame(lzLoop);
+}
+
+function drawLzIdle(){
+  const canvas=document.getElementById('lazerCanvas');
+  const ctx=canvas.getContext('2d');
+  const w=canvas.width,h=canvas.height;
+  ctx.fillStyle='#06040f';ctx.fillRect(0,0,w,h);
+  ctx.strokeStyle='rgba(0,229,204,0.04)';ctx.lineWidth=1;
+  for(let x=0;x<w;x+=28){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();}
+  for(let y=0;y<h;y+=28){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();}
+  ctx.save();ctx.shadowColor='#00e5cc';ctx.shadowBlur=22;
+  ctx.beginPath();ctx.arc(w/2,h-40,9,0,Math.PI*2);ctx.fillStyle='#00e5cc';ctx.fill();ctx.restore();
+}
+
+function resetLazer(){
+  lzRunning=false;cancelAnimationFrame(lzAnim);clearTimeout(lzSpawnTO);
+  lzTX=null;lzTY=null;lazers=[];
+  const canvas=document.getElementById('lazerCanvas');
+  pX=canvas.width/2;pY=canvas.height-40;
+  document.getElementById('lazer-score').textContent='SÜRE — 0.0s';
+  document.getElementById('lazer-msg').textContent='BAŞLAMAK İÇİN DOKUN';
+  drawLzIdle();
+}
+
+window.addEventListener('resize',()=>{if(!lzRunning)setTimeout(()=>{resetLazer();initLazer();},200);});
+</script>
 </body>
 </html>
