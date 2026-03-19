@@ -1,519 +1,163 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Burak & İrem — Bizim Hikayemiz</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --bg: #07050f;
-  --card: rgba(16,12,28,0.82);
-  --border: rgba(200,168,130,0.16);
-  --accent: #c8a882;
-  --accent2: #ecdfc8;
-  --rose: #c8728a;
-  --gold: #f0d080;
-  --blue: #88c0d8;
-  --morning: #f5c87a;
-  --text: #ddd5c8;
-  --muted: #6e6258;
-  --dim: #3e3a36;
-}
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--text); font-family: 'Raleway', sans-serif; min-height: 100vh; overflow: hidden; }
+  <meta charset="UTF-8" />
+  <title>Mineeee 🫶 En sevdiğim insana sürpriz varrrr</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+      background-size: 600% 600%;
+      animation: gökkuşağıManyağı 12s ease infinite;
+      font-family: "Comic Sans MS", "Chalkboard SE", cursive;
+      color: #fff;
+      overflow: hidden;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><text y="36" font-size="42">😈</text></svg>'), auto;
+    }
 
-#sky { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    @keyframes gökkuşağıManyağı {
+      0% {background-position:0% 50%}
+      50% {background-position:100% 50%}
+      100% {background-position:0% 50%}
+    }
 
-.screen { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 10; opacity: 0; pointer-events: none; transition: opacity 1s ease; }
-.screen.active { opacity: 1; pointer-events: all; }
+    h1 {
+      font-size: 11vw;
+      text-align: center;
+      margin-top: 12vh;
+      text-shadow: 6px 6px 0 #000, -6px -6px 0 #ff00aa;
+      animation: zıplaVeDön 2.4s infinite;
+      user-select: none;
+    }
 
-/* INTRO */
-.intro-wrap { text-align: center; max-width: 520px; }
-.intro-kicker { font-size: 9px; letter-spacing: 6px; text-transform: uppercase; color: var(--muted); margin-bottom: 40px; animation: fadeUp 1.2s ease both; }
-.intro-names { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 11vw, 96px); font-weight: 300; line-height: 1; color: var(--accent2); animation: breathe 5s ease-in-out infinite, fadeUp 1.2s 0.2s ease both; }
-.intro-names em { font-style: italic; color: var(--rose); }
-.amp { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--dim); letter-spacing: 10px; margin: 10px 0; animation: fadeUp 1.2s 0.3s ease both; }
-.intro-tagline { font-size: 11px; color: var(--muted); letter-spacing: 2px; line-height: 1.9; margin-bottom: 52px; font-weight: 300; animation: fadeUp 1.2s 0.4s ease both; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes breathe { 0%,100% { text-shadow: 0 0 40px rgba(200,168,130,0.12); } 50% { text-shadow: 0 0 80px rgba(200,168,130,0.38); } }
-.btn-start { display: inline-block; background: transparent; border: 1px solid rgba(200,168,130,0.32); color: var(--accent); padding: 15px 56px; font-family: 'Raleway', sans-serif; font-size: 10px; letter-spacing: 5px; text-transform: uppercase; cursor: pointer; transition: all 0.4s; animation: fadeUp 1.2s 0.6s ease both; }
-.btn-start:hover { border-color: var(--accent); color: var(--accent2); background: rgba(200,168,130,0.05); }
+    @keyframes zıplaVeDön {
+      0%,100% { transform: translateY(0) rotate(-4deg) scale(1); }
+      50%     { transform: translateY(-40px) rotate(4deg) scale(1.12); }
+    }
 
-/* STORY */
-.story-wrap { max-width: 720px; width: 100%; max-height: 96vh; overflow-y: auto; scrollbar-width: none; padding: 8px 0 32px; }
-.story-wrap::-webkit-scrollbar { display: none; }
+    .mesaj {
+      position: absolute;
+      font-size: 7vw;
+      font-weight: bold;
+      color: #ffff00;
+      text-shadow: 0 0 20px #ff00ff, 0 0 40px #000;
+      pointer-events: none;
+      animation: kaybolGel 5s infinite;
+      white-space: nowrap;
+    }
 
-.ch-nav { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.ch-tag { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: var(--rose); font-weight: 600; white-space: nowrap; }
-.ch-line { flex: 1; height: 1px; background: var(--border); }
-.ch-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--dim); }
+    @keyframes kaybolGel {
+      0%,100% {opacity:0; transform:scale(0.3) translateY(100vh);}
+      20%,80% {opacity:1; transform:scale(1.3) translateY(0);}
+    }
 
-.dots { display: flex; gap: 5px; margin-bottom: 16px; flex-wrap: wrap; }
-.dot { height: 3px; border-radius: 2px; background: var(--dim); transition: all 0.5s; width: 12px; }
-.dot.done { background: rgba(200,114,138,0.4); }
-.dot.active { background: var(--rose); width: 30px; }
+    .buton {
+      position: fixed;
+      left: 50%;
+      top: 70%;
+      transform: translate(-50%, -50%);
+      padding: 35px 90px;
+      font-size: 8vw;
+      font-weight: 900;
+      color: #fff;
+      background: #ff0066;
+      border: 12px solid #00ffff;
+      border-radius: 999px;
+      box-shadow: 0 0 60px #ff00ff, inset 0 0 30px #000;
+      cursor: not-allowed;
+      user-select: none;
+      pointer-events: none;
+      animation: titretKudur 0.18s infinite alternate;
+    }
 
-.story-card { background: var(--card); border: 1px solid var(--border); border-radius: 3px; padding: 36px 42px; backdrop-filter: blur(20px); margin-bottom: 18px; position: relative; }
-.story-card::before { content: ''; position: absolute; top: 0; left: 38px; width: 52px; height: 2px; background: linear-gradient(90deg, var(--rose), transparent); }
-.story-card.morning-card::before { background: linear-gradient(90deg, var(--morning), transparent); }
+    @keyframes titretKudur {
+      0%   { transform: translate(-50%, -50%) rotate(-3deg) scale(1); }
+      100% { transform: translate(-48%, -52%) rotate(3deg) scale(1.07); }
+    }
 
-.scene-icon { font-size: 28px; margin-bottom: 22px; display: block; filter: drop-shadow(0 0 12px rgba(200,168,130,0.35)); }
+    .yasak-yazi {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14vw;
+      font-weight: 900;
+      color: #ff0044;
+      text-shadow: 0 0 35px black;
+      transform: rotate(-12deg);
+      pointer-events: none;
+      z-index: 999;
+      animation: yasaaaaak 9s infinite;
+    }
 
-.story-body { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.2vw, 20px); line-height: 2.05; font-weight: 300; color: var(--text); }
-.story-body em { font-style: italic; color: var(--accent2); }
-.story-body strong { font-weight: 400; color: var(--rose); }
-.story-body .gold { color: var(--gold); }
-.story-body .morning { color: var(--morning); }
-.story-body .blue { color: var(--blue); }
-
-.narrator { font-size: 11px; letter-spacing: 0.5px; color: var(--muted); font-style: italic; line-height: 1.85; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 18px; }
-
-.choices { display: flex; flex-direction: column; gap: 10px; }
-.choice { background: transparent; border: 1px solid var(--border); color: var(--text); padding: 18px 26px; font-family: 'Cormorant Garamond', serif; font-size: clamp(15px, 2vw, 18px); font-style: italic; text-align: left; cursor: pointer; transition: all 0.35s; border-radius: 2px; display: flex; align-items: flex-start; gap: 14px; line-height: 1.55; }
-.choice-n { font-family: 'Raleway', sans-serif; font-size: 9px; letter-spacing: 3px; color: var(--rose); font-style: normal; flex-shrink: 0; margin-top: 3px; }
-.choice:hover { border-color: rgba(200,168,130,0.42); background: rgba(200,168,130,0.05); color: var(--accent2); transform: translateX(8px); }
-
-/* SHOOTING STAR */
-#ss-overlay { position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0; transition: opacity 0.7s; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; background: rgba(7,5,15,0.8); backdrop-filter: blur(8px); }
-#ss-overlay.show { opacity: 1; pointer-events: all; }
-.ss-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 4vw, 42px); font-style: italic; color: var(--gold); text-align: center; padding: 0 32px; animation: glow 2.5s ease-in-out infinite; }
-@keyframes glow { 0%,100% { text-shadow: 0 0 20px rgba(240,208,128,0.25); } 50% { text-shadow: 0 0 70px rgba(240,208,128,0.75); } }
-.ss-sub { font-size: 10px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
-.ss-wish { font-family: 'Cormorant Garamond', serif; font-size: clamp(14px, 1.8vw, 17px); color: rgba(236,223,200,0.55); font-style: italic; margin-top: 8px; text-align: center; padding: 0 48px; line-height: 1.8; }
-.ss-btn { margin-top: 30px; background: transparent; border: 1px solid rgba(240,208,128,0.35); color: var(--gold); padding: 13px 44px; font-family: 'Raleway', sans-serif; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
-.ss-btn:hover { background: rgba(240,208,128,0.07); }
-
-/* ENDING */
-.ending-wrap { max-width: 600px; width: 100%; text-align: center; max-height: 96vh; overflow-y: auto; scrollbar-width: none; padding-bottom: 24px; }
-.ending-wrap::-webkit-scrollbar { display: none; }
-.ending-icons { font-size: 24px; margin-bottom: 24px; letter-spacing: 10px; opacity: 0; animation: fadeUp 1s 0.2s ease forwards; }
-.ending-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 4.5vw, 44px); font-weight: 300; color: var(--accent2); line-height: 1.3; margin-bottom: 30px; opacity: 0; animation: fadeUp 1s 0.4s ease forwards; }
-.ending-headline em { font-style: italic; color: var(--rose); }
-.letter { background: var(--card); border: 1px solid var(--border); border-radius: 3px; padding: 36px 42px; backdrop-filter: blur(20px); font-family: 'Cormorant Garamond', serif; font-size: clamp(15px, 2vw, 18px); line-height: 2.05; font-weight: 300; text-align: left; color: var(--text); font-style: italic; margin-bottom: 28px; position: relative; opacity: 0; animation: fadeUp 1s 0.6s ease forwards; }
-.letter::before { content: '"'; font-size: 110px; color: rgba(200,168,130,0.05); font-family: 'Cormorant Garamond', serif; position: absolute; top: -16px; left: 18px; line-height: 1; pointer-events: none; }
-.letter strong { font-style: normal; color: var(--rose); font-weight: 400; }
-.letter .sign { color: var(--gold); font-style: normal; }
-.btn-restart { background: transparent; border: 1px solid var(--dim); color: var(--dim); padding: 10px 28px; font-family: 'Raleway', sans-serif; font-size: 9px; letter-spacing: 4px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; opacity: 0; animation: fadeUp 1s 0.9s ease forwards; }
-.btn-restart:hover { color: var(--accent); border-color: var(--accent); }
-
-.floater { position: fixed; pointer-events: none; z-index: 99; font-size: 18px; animation: floatUp 3s ease-out forwards; }
-@keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-200px) scale(0.35) rotate(15deg); } }
-
-@media (max-width: 640px) {
-  .story-card, .letter { padding: 22px 18px; }
-  .story-card::before { left: 18px; }
-}
-</style>
+    @keyframes yasaaaaak {
+      0%   { transform: rotate(-12deg) scale(1); }
+      50%  { transform: rotate(12deg) scale(1.2); }
+      100% { transform: rotate(-12deg) scale(1); }
+    }
+  </style>
 </head>
 <body>
-<canvas id="sky"></canvas>
 
-<div id="ss-overlay">
-  <div class="ss-text">Tam o an gökten bir yıldız aktı...</div>
-  <div class="ss-sub">ikisi de aynı anda gördü — ikisi de sustu</div>
-  <div class="ss-wish">Bazı anlar kelimelerden daha güçlüdür.<br>İkisi de bunu hissetti, gözleri hâlâ gökyüzündeyken.</div>
-  <button class="ss-btn" onclick="dismissSS()">Dilek tuttum 🌠</button>
-</div>
+  <div class="yasak-yazi">TIKLAMA MİNE TIKLAMA LAN 🤬</div>
 
-<!-- INTRO -->
-<div class="screen active" id="s-intro">
-  <div class="intro-wrap">
-    <div class="intro-kicker">Sadece İrem için hazırlandı</div>
-    <div class="intro-names"><em>İrem</em></div>
-    <div class="amp">— & —</div>
-    <div class="intro-names">Burak</div>
-    <div class="intro-tagline" style="margin-top:10px">
-      Gerçek anlar. Gerçek duygular.<br>
-      <span style="color:var(--dim)">Bu, senin hikayeni anlatıyor.</span>
-    </div>
-    <button class="btn-start" onclick="startGame()">Hikayeyi Keşfet ↓</button>
-  </div>
-</div>
+  <h1>MİNE MİNE MİNE MİNE MİNEEEE</h1>
 
-<!-- STORY -->
-<div class="screen" id="s-story">
-  <div class="story-wrap" id="story-wrap">
-    <div class="ch-nav">
-      <span class="ch-tag" id="ch-tag">Bölüm</span>
-      <div class="ch-line"></div>
-      <span class="ch-num" id="ch-num">01</span>
-    </div>
-    <div class="dots" id="dots"></div>
-    <div class="story-card" id="story-card">
-      <span class="scene-icon" id="scene-icon"></span>
-      <div class="story-body" id="story-body"></div>
-      <div class="narrator" id="narrator"></div>
-    </div>
-    <div class="choices" id="choices"></div>
-  </div>
-</div>
+  <div class="buton" id="fakeButon">BURAYA BAS BAKALIM 😏</div>
 
-<!-- ENDING -->
-<div class="screen" id="s-ending">
-  <div class="ending-wrap" id="ending-wrap">
-    <div class="ending-icons">🌙 ✦ 🌠 ✦ 💌</div>
-    <div class="ending-headline">Sana bir şey anlatmak istedim,<br><em>işte bu.</em></div>
-    <div class="letter">
-      <strong>İrem,</strong><br><br>
+  <script>
+    const sacmaMesajlar = [
+      "Mine sen yine mi bastın ya 😂😂",
+      "Aaa Mine sinirleniyo galiba hihihi",
+      "Mineee dur öptüm ama basmaya devam ediyosun",
+      "50 kere daha basarsan belki söylerim sırrı 🤫",
+      "Mine bu kadar tıklama enerjini spora harcasana ya",
+      "Hala basıyo lan bu kız 😂 pes etmiyo",
+      "Mineeee yeter artık sinir oldum ben şimdi",
+      "Tamam basmaya devam et bakalım ne olacak",
+      "Mine senin yüzünden sayfa çökücek şimdi",
+      "Hala burda mısın ya git işine bak 😤",
+      "Mine en sinir bozucu arkadaş ödülü sana gidiyor 🏆",
+      "Bas bas bas bas bas bas bas bas bas bas",
+      "Mineee yeter ulan sinir krizi geçiricem"
+    ];
 
-      Sana küçük bir itiraf:<br>
-      Sana o ilk mesajı atıp uyuya kaldım.<br><br>
+    let tikSayisi = 0;
 
-      Sabah 09:00'da gözlerimi açtım, telefona baktım —<br>
-      ve senin mesajını gördüm.<br><br>
+    document.body.addEventListener('click', (e) => {
+      tikSayisi++;
 
-      O an hissettiğim şeyi tarif etmek zor.<br>
-      Bir sabah güneşi gibi bir şeydi. Sıcak, beklenmedik, güzel.<br><br>
+      // Her tıklamada rastgele yerde saçma mesaj çıkar
+      const msg = document.createElement('div');
+      msg.className = 'mesaj';
+      msg.textContent = sacmaMesajlar[Math.floor(Math.random() * sacmaMesajlar.length)];
+      msg.style.left = Math.random() * 90 + 'vw';
+      msg.style.top = Math.random() * 70 + 'vh';
+      msg.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(msg);
 
-      Sonra konuştuk. Saatler geçti.<br>
-      Sonra o gece — otopark, soğuk hava, arabaya geçiş.<br>
-      Birlikte o tepeye çıktık, şehir önümüzde parlıyordu —<br>
-      ikimiz de kendi termosuyla gelmiştik. İki kahve, bir manzara. 🥹<br>
-      Yıldız kaydı — ikimiz de dilek tuttuk.<br>
-      Sonra görüntülü aramalar, Aytepe akşamı, çekirdek, kola.<br><br>
+      setTimeout(() => msg.remove(), 6000);
 
-      Ve şimdi bu satırlar.<br><br>
-
-      Çünkü seninle yaşadığım her anı kaydetmek istedim.
-      Unutmamak için değil —
-      <em>seninle paylaşmak için.</em><br><br>
-
-      Seni tanıdığım için çok şanslıyım, İrem.<br>
-      Ve bu hikayenin devamını seninle yazmak istiyorum. 🌙<br><br>
-
-      <span class="sign">— Burak</span>
-    </div>
-    <button class="btn-restart" onclick="restart()">↺ &nbsp; Başa Dön</button>
-  </div>
-</div>
-
-<script>
-/* STARS */
-const canvas = document.getElementById('sky');
-const ctx = canvas.getContext('2d');
-let W, H, stars = [], shooters = [];
-
-function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; mkStars(); }
-function mkStars() {
-  stars = Array.from({length:240}, () => ({
-    x: Math.random()*W, y: Math.random()*H,
-    r: Math.random()*1.4+0.2,
-    base: Math.random()*0.65+0.15,
-    sp: Math.random()*0.003+0.001,
-    ph: Math.random()*Math.PI*2,
-    warm: Math.random() > 0.8
-  }));
-}
-resize();
-window.addEventListener('resize', resize);
-
-function launchShooters() {
-  for (let i = 0; i < 7; i++) {
-    setTimeout(() => {
-      shooters.push({ x: Math.random()*W*0.55, y: Math.random()*H*0.38, vx: 7+Math.random()*5, vy: 3.5+Math.random()*3, life: 1, tail: [] });
-    }, i*170);
-  }
-}
-
-let t = 0;
-(function loop() {
-  t += 0.016;
-  ctx.clearRect(0,0,W,H);
-  const g = ctx.createLinearGradient(0,0,0,H);
-  g.addColorStop(0,'#05030c'); g.addColorStop(1,'#0b081c');
-  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
-  stars.forEach(s => {
-    const o = s.base*(0.55+0.45*Math.sin(t*s.sp*60+s.ph));
-    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fillStyle = s.warm ? `rgba(245,228,195,${o})` : `rgba(175,212,238,${o})`;
-    ctx.fill();
-  });
-  shooters.forEach((s,i) => {
-    s.tail.unshift({x:s.x,y:s.y});
-    if (s.tail.length>32) s.tail.pop();
-    s.x+=s.vx; s.y+=s.vy; s.life-=0.02;
-    s.tail.forEach((p,j) => {
-      const f=(1-j/s.tail.length)*s.life;
-      ctx.beginPath(); ctx.arc(p.x,p.y,1.6-j*0.045,0,Math.PI*2);
-      ctx.fillStyle=`rgba(255,235,155,${f*0.9})`; ctx.fill();
-    });
-    if (s.life<=0) shooters.splice(i,1);
-  });
-  requestAnimationFrame(loop);
-})();
-
-/* SCENES — 10 bölüm */
-const TOTAL = 10;
-const scenes = [
-  {
-    id:0, tag:"Bölüm 1 — Ekranın Arkasındaki Ses", num:"01", icon:"📱", morning:false,
-    body:`Tanımazsın bazen insanı.<br><br>
-Önce ekranda bir isim görürsün. Bir fotoğraf. Birkaç satır.<br>
-Ve çoğu zaman geçersin. Kaydırırsın. Devam edersin.<br><br>
-Ama bazen — <em>bazen</em> —<br>
-bir şey duraksatır seni.<br><br>
-<strong>Burak</strong> yazmıştı.<br><br>
-Kelimeleri az ama içinde bir şeyler vardı. Gösterişsiz bir samimiyet,
-fazla çaba harcamayan ama gerçek olan bir sıcaklık.<br><br>
-Telefonu bırakmak yerine okudun. Sonra tekrar okudun.<br><br>
-<em>Cevap verecek misin?</em>`,
-    narrator:"Her şey bir seçimle başlar. Sen o gün cevap vermeyi seçtin.",
-    choices:[
-      {text:"Cevap verdim. Bir şeyler çekti beni. ✨", next:1},
-      {text:"Neden bilmiyorum ama yazdım. Bakalım dedim. 💬", next:1}
-    ]
-  },
-  {
-    id:1, tag:"Bölüm 2 — Uyuya Kaldım", num:"02", icon:"😴", morning:false,
-    body:`Burak yazdı. Sen de yazdın.<br><br>
-Sohbet başladı — ve tam da iyi bir yere geliyorken...<br><br>
-<em>Burak uyuya kaldı.</em><br><br>
-Sabahı bekledi mesaj. Cevap gelmedi. Bir şeyler mi oldu diye sorulmadı bile —<br>
-çünkü uyku, bazen en dürüst cevaptır.<br><br>
-Ve sen? Sabah <span class="morning">09:00'da</span> telefona baktın.<br>
-Orada duruyordu. Cevapsız, sade, bekleyen bir mesaj.<br><br>
-<em>Bu sana ne hissettirdi?</em>`,
-    narrator:"Bazen insanlar sana etkileyici şeyler söylemez. Sadece orada olur — uyuyakalmış bile olsalar.",
-    choices:[
-      {text:"Güldüm. Çok tatlıydı bu. 😄", next:2},
-      {text:"İçimde ufak bir şey kıpırdadı. Sabah mesajı gibiydi. 🌅", next:2}
-    ]
-  },
-  {
-    id:2, tag:"Bölüm 3 — Sabah 09:00", num:"03", icon:"🌅", morning:true,
-    body:`Sabah güneşi, sıcak bir ekran ışığı.<br><br>
-Burak uyandı. Telefona baktı. Mesajını gördü.<br>
-Ve içinden geçti: <em>"Acaba ne düşündü?"</em><br><br>
-Ama sen cevap vermiştin.<br><br>
-O sabah konuşmaya başladınız. Bir önceki gecenin yarım kalan sohbeti,<br>
-sabah kahvesinin sıcaklığıyla devam etti.<br><br>
-Güneş yükselirken kelimeler aktı.<br>
-Tanıdık ama yeni, rahat ama heyecanlı.<br><br>
-<span class="morning">Bu sabah, bir şeylerin başlangıcıydı.</span><br><br>
-<strong>O sabah nasıl bir his vardı içinde?</strong>`,
-    narrator:"Sabah mesajı özeldir. Günün ilk düşüncesi gibidir — o an kim aklındaysa, bir şey ifade eder.",
-    choices:[
-      {text:"Gülümserek telefonu elime aldım. 🌸", next:3},
-      {text:"O gün daha iyi hissettim kendimi. Fark etmeden. ☀️", next:3}
-    ]
-  },
-  {
-    id:3, tag:"Bölüm 4 — Saatler Nasıl Geçti?", num:"04", icon:"🌙",  morning:false,
-    body:`Sohbet büyüdü. Derinleşti.<br><br>
-Günler geçtikçe konuşmalar uzadı — bazen geç saatlere kadar,<br>
-bazen sabaha karşı, bazen gün ortasında ansızın bir mesaj.<br><br>
-Gerçek şeyler söyledi. Sen de söyledin.<br>
-Alışılmadık bir şekilde rahat hissettirdi kendini.<br><br>
-Ve bir gün fark ettin: <em>saat gece 02:00 olmuş.</em><br><br>
-Telefona bakmaya başlamak yerine,<br>
-telefonu bırakmak istemiyordun.<br><br>
-<strong>Bu his tanıdık mıydı?</strong>`,
-    narrator:"Zaman, gerçekten merak ettiğin biriyle konuşurken başka akar.",
-    choices:[
-      {text:"Tanıdık değildi. Farklıydı bu. 🤍", next:4},
-      {text:"İçimde küçük bir şey kıpırdıyordu. 🌸", next:4}
-    ]
-  },
-  {
-    id:4, tag:"Bölüm 5 — Gece Yarısı Çağrısı", num:"05", icon:"🏥", morning:false,
-    body:`Sonra o mesaj geldi.<br><br>
-Arkadaşın ameliyat olacaktı. Refakatçi olmak zorundaydın.<br>
-Zor bir geceydi bu — bilmediğin bir hastane, bekleme koridorları, o ağır sessizlik.<br><br>
-Burak'a yazdın. Belki sadece konuşmak için.<br><br>
-Ve o dedi ki:<br><br>
-<em>"İstersen ben de geleyim."</em><br><br>
-Gece <strong>01:00.</strong><br><br>
-Neredeyse yabancı biri. Ve yine de — tereddüt etmeden söyledi.<br><br>
-<strong>İçinden ne geçti o an?</strong>`,
-    narrator:"Gelmesi kolay değildi. Ama o kolaymış gibi söyledi. Bunun kendine özgü bir ağırlığı var.",
-    choices:[
-      {text:"Şaşırdım. Bunu beklemiyordum. 😶", next:5},
-      {text:"Sıcak bir şey hissettim içimde. Gelmesini istedim. 💛", next:5}
-    ]
-  },
-  {
-    id:5, tag:"Bölüm 6 — Araç, Soğuk Hava, Manzara", num:"06", icon:"🚗", morning:false,
-    body:`Geldi.<br><br>
-Koridora değil — <em>otoparka.</em><br><br>
-Gece 01:00'de, hastane otoparkında soğuk havanın altında bekliyordu.<br>
-Çıktın. Gördün onu. O da seni gördü.<br><br>
-Hava soğuktu. Direk arabaya geçtiniz.<br>
-Araba camlarında gecenin buğusu, içeride ise başka bir sıcaklık.<br><br>
-<em>"Güzel bir yer bulalım mı?"</em> dedi.<br><br>
-Ve aradınız. Gece yarısı, iki kişi, şehrin içinde manzaralı bir köşe.<br>
-Buldunuz.<br><br>
-Hastane zaten bir tepenin üstündeydi.<br>
-Şehrin tüm ışıkları önlerinde uzanıyordu — aramalarına gerek bile yoktu, manzara oradaydı zaten.<br><br>
-Park ettiler. İkisi de kendi termosunu çıkardı.<br>
-İki ayrı termos, iki ayrı kahve — ve o gece aynı manzaraya bakan iki insan.<br><br>
-Buhar yükseldi. Sohbet aktı.<br>
-Şehrin ışıkları titredi uzakta.<br>
-Sessizlik geldi ara ara — ama hiç rahatsız etmedi.<br><br>
-<em>O sıcaklık — termostaki kahveden mi geliyordu, yoksa karşındaki insandan mı?</em><br><br>
-<strong>O gece sence ne değişti?</strong>`,
-    narrator:"İki termos, bir tepe, şehir ışıkları. Planlanmamış ama mükemmel. Bazen en güzel anlar böyle olur.",
-    choices:[
-      {text:"Bu geceyi hiç unutmayacağım. 🌙", next:6},
-      {text:"Onu biraz daha tanımak istiyorum. 💫", next:6}
-    ]
-  },
-  {
-    id:6, tag:"Bölüm 7 — Yıldız Kayması", num:"07", icon:"🌠", morning:false,
-    body:`Artık gitme vakti gelmişti.<br><br>
-Burak seni bırakacaktı. Vedalaşmak üzereydинiz.<br><br>
-Duraksadınız. Konuşmak için bir şey aradın ama bulmadan önce —<br><br>
-<span class="gold">Gökten bir yıldız aktı.</span><br><br>
-Uzun, yavaş, parlak bir çizgi.<br>
-İkisi de yukarı baktı. İkisi de gördü.<br>
-<em>İkisi de sustu.</em><br><br>
-Ve o sessizlikte ikisi de dilek tuttu.<br><br>
-Vedalaştınız. Ayrıldınız.<br>
-Ama bir şeyler kalmıştı havada —<br>
-söylenmemiş ama hissedilmiş bir şey.<br><br>
-<strong>O an ne diledin?</strong>`,
-    narrator:"Yıldız kaymaları saniyeler sürer. Ama o saniyede hissedilen şey bazen çok daha uzun süre kalır.",
-    choices:[
-      {text:"Söylemem, dilek tutulunca söylenmez 🤫", next:7, ss:true},
-      {text:"Bu insanla daha fazla zaman geçirmek istedim. ✨", next:7, ss:true}
-    ]
-  },
-  {
-    id:7, tag:"Bölüm 8 — Ekranlar Arasında", num:"08", icon:"📹", morning:false,
-    body:`Ertesi gün mesaj geldi.<br><br>
-Sonra görüntülü arama. Sonra uzun sohbetler.<br><br>
-Ekran karşısında bile hissedebiliyordun onu —<br>
-sesinin tonu, gülüşü, anlattığı şeyleri anlatış biçimi.<br><br>
-Burak oradaydı. Her gün biraz daha.<br>
-Sormadan, zorlamadan — sadece vardı.<br><br>
-Ve sen fark ettin ki gün içinde onun mesaj attığı anları beklemeye başlamışsın.<br><br>
-<em>Bu his ne zaman başlamıştı?</em><br><br>
-<strong>Nasıl tarif ederdin?</strong>`,
-    narrator:"Bazen biri hayatına o kadar doğal girer ki — ne zaman girdiğini bile fark etmezsin.",
-    choices:[
-      {text:"Güvende hissettim. Rahat, gerçek bir güven. 🤍", next:8},
-      {text:"İçimde küçük bir heyecan. Hâlâ devam ediyor. 💫", next:8}
-    ]
-  },
-  {
-    id:8, tag:"Bölüm 9 — Aytepe Akşamı", num:"09", icon:"🌆", morning:false,
-    body:`Dün akşam Aytepe'deydiniz.<br><br>
-Kuzeni, sevgilisi, İrem ve Burak.<br>
-Mesire alanına gittiler — o da bir tepedeydi.<br><br>
-Ve önlerinde yine şehir manzarası açıldı.<br><br>
-<em>Tıpkı ilk buluşmadaki gibi.</em><br><br>
-Sanki şehrin ışıkları onlara alışmıştı artık.<br>
-Ya da onlar birlikte hep yüksek yerlerde buluşmaya mahkumdu.<br><br>
-Fotoğraflar çekildi. Çekirdek çitlendi. Kola içildi.<br>
-Güldüler, eğlendiler. Akşam aktı gitti.<br><br>
-Ve İrem aklının bir köşesinde düşündü belki —<br>
-<span class="gold">acaba üçüncü buluşmada da şehir manzarası olacak mı?</span><br><br>
-<strong>O akşam sana ne hissettirdi?</strong>`,
-    narrator:"Bir tepede, şehir ışıkları altında, yine. Tesadüf mü? Yoksa bu ikisinin hikayesinin imzası mı?",
-    choices:[
-      {text:"Mutluydum. Basit ama gerçek bir mutluluk. 🌸", next:9},
-      {text:"Bu hissin devam etmesini istedim. 🌹", next:9}
-    ]
-  },
-  {
-    id:9, tag:"Son — Peki Şimdi?", num:"10", icon:"🌙", morning:false,
-    body:`Dur bir saniye.<br><br>
-Bak buraya kadar gelen yola:<br><br>
-Bir mesaj. Uyuya kalan biri. Sabah 09:00'da gelen cevap.<br>
-Gece 01:00'de otopark, soğuk hava, iki termos, şehir manzarası.<br>
-Yıldız kaydı — ikisi de dilek tuttu.<br>
-Görüntülü aramalar. Aytepe, fotoğraflar, çekirdek, kola.<br>
-Ve hepsinin ortasında — <em>Burak.</em><br><br>
-Bu hikayenin başlangıcından beri o hep oradaydı.<br>
-Çağrılmadan geldi. Yorulmadan dinledi.<br>
-Fazla söz vermedi ama yaptıklarıyla gösterdi.<br><br>
-İlk buluşmada şehir manzarası.<br>
-İkinci buluşmada yine şehir manzarası.<br>
-<span class="gold">Acaba bu bir tesadüf mü, yoksa sizin hikayenizin imzası mı?</span><br><br>
-<strong>Ne hissediyorsun?</strong>`,
-    narrator:"Bazı sorular cevap beklemez. Sadece hissedilir.",
-    choices:[
-      {text:"Bu hikayenin devamını görmek istiyorum. 🌙", next:"end"},
-      {text:"Kendimi çok iyi hissettiriyor yanımda olması. 💛", next:"end"}
-    ]
-  }
-];
-
-let visited = [], pendingNext = null;
-
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-function startGame() { showScreen('s-story'); loadScene(0); }
-
-function loadScene(id) {
-  if (id === 'end') { showScreen('s-ending'); setTimeout(() => document.getElementById('ending-wrap').scrollTo({top:0}), 100); return; }
-  const scene = scenes[id];
-  if (!visited.includes(id)) visited.push(id);
-
-  const dotsEl = document.getElementById('dots');
-  dotsEl.innerHTML = '';
-  for (let i = 0; i < TOTAL; i++) {
-    const d = document.createElement('div');
-    d.className = 'dot'+(i===id?' active':visited.includes(i)?' done':'');
-    dotsEl.appendChild(d);
-  }
-
-  document.getElementById('ch-tag').textContent = scene.tag;
-  document.getElementById('ch-num').textContent = scene.num;
-  document.getElementById('scene-icon').textContent = scene.icon;
-  document.getElementById('story-body').innerHTML = scene.body;
-  document.getElementById('narrator').textContent = scene.narrator;
-
-  const card = document.getElementById('story-card');
-  card.classList.toggle('morning-card', !!scene.morning);
-
-  const choicesEl = document.getElementById('choices');
-  choicesEl.innerHTML = '<div class="choice-prompt">— ne hissettin?</div>';
-  scene.choices.forEach((c, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'choice';
-    btn.innerHTML = `<span class="choice-n">0${i+1}</span>${c.text}`;
-    btn.onclick = () => {
-      spawnFloaters(btn);
-      if (c.ss) {
-        pendingNext = c.next;
-        launchShooters();
-        setTimeout(() => document.getElementById('ss-overlay').classList.add('show'), 600);
-      } else {
-        setTimeout(() => { loadScene(c.next); scrollUp(); }, 500);
+      // 8. tıklamadan sonra başlık değişmeye başlar
+      if (tikSayisi > 7) {
+        document.querySelector('h1').innerHTML = "MİNE DUR ARTIK YA" + " 😡".repeat(Math.min(tikSayisi-7, 8));
       }
-    };
-    choicesEl.appendChild(btn);
-  });
-  scrollUp();
-}
 
-function dismissSS() {
-  document.getElementById('ss-overlay').classList.remove('show');
-  setTimeout(() => { loadScene(pendingNext); scrollUp(); }, 600);
-}
-function scrollUp() { setTimeout(() => document.getElementById('story-wrap').scrollTo({top:0,behavior:'smooth'}), 50); }
-function restart() { visited = []; showScreen('s-intro'); }
+      // 20 tık sonra buton küçülmeye başlar (psikolojik savaş)
+      if (tikSayisi > 20) {
+        const btn = document.getElementById('fakeButon');
+        btn.style.transform = `translate(-50%, -50%) scale(${Math.max(0.3, 1 - (tikSayisi-20)*0.04)})`;
+      }
 
-const fIcons = ['🌙','✨','💫','🌸','🌠','💛','🌟','⭐','🌅'];
-function spawnFloaters(btn) {
-  const r = btn.getBoundingClientRect();
-  for (let i = 0; i < 7; i++) {
-    setTimeout(() => {
-      const el = document.createElement('div');
-      el.className = 'floater';
-      el.textContent = fIcons[Math.floor(Math.random()*fIcons.length)];
-      el.style.left = (r.left + Math.random()*r.width) + 'px';
-      el.style.top  = (r.top  + Math.random()*24) + 'px';
-      el.style.animationDelay = (Math.random()*0.15)+'s';
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), 3200);
-    }, i*70);
-  }
-}
-</script>
+      // 35 tık sonra ekran sallanır
+      if (tikSayisi === 35) {
+        document.body.style.animation = 'salla 0.4s infinite';
+        document.body.insertAdjacentHTML('beforeend', `<style>@keyframes salla { 0%,100%{transform:translate(0,0)} 25%{transform:translate(-12px,8px)} 50%{transform:translate(12px,-8px)} 75%{transform:translate(-8px,12px)} }</style>`);
+      }
+    });
+  </script>
+
 </body>
 </html>
